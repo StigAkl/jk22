@@ -1,0 +1,1 @@
+const fs = require("fs");const gifts = fs.readFileSync("./gaver.txt", "utf-8").split("\r\n");let i=0,j = 0;gifts.forEach(g => { j+= i > 2 ? i : 2; i+= g.includes("alv") ? 0 : 1;}); console.log(j);
