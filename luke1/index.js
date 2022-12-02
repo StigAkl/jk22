@@ -30,11 +30,13 @@ let charPos = 0;
 for(let i = 0; i < wishliststring.length; i++) {
     constructedString = wishliststring.substring(startIndex, i+1); 
     charPos++;
+    
     if(isWord(constructedString)) {
         currentLongestMatch = constructedString;
         currentLongestMatchIndex = i; 
         if(exact_match(constructedString)) nextIndex(i, currentLongestMatch)
     }
+
     if(charPos >=  lp_length) {
         nextIndex(currentLongestMatchIndex, currentLongestMatch);
         i = currentLongestMatchIndex;
