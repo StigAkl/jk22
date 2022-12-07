@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        var context = canvas.getContext('2d');
+        canvas.width = document.body.clientWidth;;
+        canvas.height = document.body.clientHeight;;
+        context.fillStyle = "gray";
+        context.fillRect(0,0,1500,1500)
+        function drawPixel(context, x, y, color) {
+            var roundedX = Math.round(x);
+            var roundedY = Math.round(y);
+            context.fillStyle = color || '#000';
+            context.fillRect(roundedX, roundedY, 1, 1);
+        }
+        fetch('test.txt')
+            .then(response => response.text())
+            .then(text => {
+            let lines = text.split("\n");
+            for(let i = 0; i < lines.length; i++) {
+                let pixels = lines[i].split(" ");
+                console.log
+                for(let j = 0; j < pixels.length; j++) {
+                    let pixel = pixels[j];
+                    let bin = parseInt(pixel).toString(2);
+                    let isEvil = (bin.match(/1/g) || []).length % 2 != 0
+                    if(isEvil) {
+                        drawPixel(context, i,j)
+                    }
+                }
+            }
+            })
+        // Usage example:
+        drawPixel(context, 20, 10, 'black'); // x=20 y=10
+    </script>
+</body>
+</html>
