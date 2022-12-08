@@ -31,19 +31,16 @@
             context.fillStyle = color || '#000';
             context.fillRect(roundedX, roundedY, 1, 1);
         }
-        fetch('test.txt')
+        fetch('encrypted.txt')
             .then(response => response.text())
             .then(text => {
             let lines = text.split("\n");
             for(let i = 0; i < lines.length; i++) {
                 let pixels = lines[i].split(" ");
-                console.log
                 for(let j = 0; j < pixels.length; j++) {
                     let pixel = pixels[j];
-                    let bin = parseInt(pixel).toString(2);
-                    let isEvil = (bin.match(/1/g) || []).length % 2 != 0
-                    if(isEvil) {
-                        drawPixel(context, i,j)
+                    if((parseInt(pixel).toString(2).match(/1/g) || []).length % 2 === 0){
+                        drawPixel(context, j,i)
                     }
                 }
             }
