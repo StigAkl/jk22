@@ -1,0 +1,14 @@
+{
+  "name": "l8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "convex_hull.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-p5": "^1.0.4"
+  }
+}
